@@ -9,6 +9,7 @@ node
 	{
         def dockerHome = tool 'myDocker'
         def mavenHome  = tool 'myMaven'
+	def gradleHome = tool 'GRADLE_3'
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
         }
 stage('gitCheckout') 
@@ -17,7 +18,8 @@ stage('gitCheckout')
     	}
 stage('Build')
 	{
-        sh "mvn package"
+        echo '=== Build Started '
+        sh './gradlew clean build'
         }
   stage('Junit')
 	{
