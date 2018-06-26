@@ -11,9 +11,9 @@ VOLUME /tmp
 EXPOSE 8085
 
 # The application's jar file
-COPY /target/JSCover-2.0.7-SNAPSHOT.jar //
+COPY /gradle/wrapper/gradle-wrapper.jar //
 # The application properties
 #COPY /var/lib/jenkins/workspace/Test/src/main/resources/application.yml //
 
 # Run the jar file
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/JSCover-2.0.7-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/gradle-wrapper.jar"]
