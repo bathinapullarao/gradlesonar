@@ -10,7 +10,7 @@ node
         def dockerHome = tool 'myDocker'
         def mavenHome  = tool 'myMaven'
 	def gradleHome = tool 'GRADLE_3'
-        env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
+        env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${gradleHome}/bin:${env.PATH}"
         }
 stage('gitCheckout') 
 	{
@@ -21,7 +21,7 @@ stage('Build')
         echo '=== Build Started '
         sh './gradlew clean build'
         }
-  stage('Junit')
+  /*  stage('Junit')
 	{
         try {
             sh "mvn test" 
@@ -205,5 +205,7 @@ def dipProd(containerName, tag, dockerHubUser, httpPort){
     sh "docker pull $dockerHubUser/$containerName"
     sh "docker run -it --rm -p $httpPort:$httpPort --name $containerName $dockerHubUser/$containerName:$tag"
     echo "Application started on port: ${httpPort} (http)"
+*/
+
 }
 
